@@ -4,10 +4,11 @@
       %tr
         %td= i + 1
         %td
-          %img.img-rounded{ src: movie.cover }
+          = movie.poster_image
         %td
           %h4
             = link_to movie.title, movie_path(movie)
+            = movie.rating
           %p
             %strong
               = link_to movie.genre.name, movies_genre_path(movie.genre)

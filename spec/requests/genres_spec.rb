@@ -2,6 +2,9 @@ require "rails_helper"
 
 describe "Genres requests", type: :request do
   let!(:genres) { create_list(:genre, 5, :with_movies) }
+  before do
+    allow_any_instance_of(MovieDetails).to receive(:call) { OpenStruct.new() }
+  end
 
   describe "genre list" do
     it "displays only related movies" do
