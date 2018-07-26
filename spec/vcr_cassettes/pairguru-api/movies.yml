@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Star%20Wars%20V
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 26 Jul 2018 08:25:50 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"83c5cd77d49d66eb11260c20b98dcd18"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8741a603-dd1f-4331-ad23-df5784df8643
+      X-Runtime:
+      - '0.014458'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"8","type":"movie","attributes":{"title":"Star Wars V","plot":"After
+        the rebels have been brutally overpowered by the Empire on their newly established
+        base, Luke Skywalker takes advanced Jedi training with Master Yoda, while
+        his friends are pursued by Darth Vader as part of his plan to capture Luke.","rating":8.8,"poster":"/star_wars_v.jpg"}}}'
+    http_version: 
+  recorded_at: Thu, 26 Jul 2018 08:25:51 GMT
+- request:
+    method: get
+    uri: https://pairguru-api.herokuapp.com/api/v1/movies/Klan
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - pairguru-api.herokuapp.com
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 26 Jul 2018 08:29:18 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 0a6cbad9-1586-44e5-8b87-95275e999df3
+      X-Runtime:
+      - '0.022350'
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"message":"Couldn''t find Movie"}'
+    http_version: 
+  recorded_at: Thu, 26 Jul 2018 08:29:19 GMT
+recorded_with: VCR 4.0.0

@@ -14,16 +14,12 @@ class MovieDetails
   private
 
   def fetch_data
+    return OpenStruct.new(success?: false, message: json_response['message']) if json_response['data'].blank?
     attributes = json_response['data']['attributes']
     OpenStruct.new(success?: true,
                rating: attributes['rating'],
                poster: POSTER_URL + attributes['poster'],
                plot: attributes['plot']
-    )
-  rescue URI::InvalidURIError => e
-    Rails.logger.warn "Invalid URL: #{e.message}"
-    OpenStruct.new(success?: false,
-                   error: e.message
     )
   end
 
