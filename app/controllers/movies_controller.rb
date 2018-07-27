@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     @movies = Movie.all.decorate
     respond_to do |format|
       format.html
-      format.json { render json: @movies.to_json( only: %w(id title ) ) }
+      format.json { render json: @movies.to_json(only: %w[id title]) }
     end
   end
 
@@ -13,7 +13,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
     respond_to do |format|
       format.html
-      format.json { render json: @movie }
+      format.json { render json: @movie.to_json(include: :genre) }
     end
   end
 

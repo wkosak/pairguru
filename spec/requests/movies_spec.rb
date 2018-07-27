@@ -31,10 +31,16 @@ describe "Movies requests", type: :request do
     end
 
     context 'JSON' do
+      before { visit "/movies/#{movie.id}.json" }
+
       it "displays movie attributes" do
-        visit "/movies/#{movie.id}.json"
         expect(page.body).to match(/#{movie.title}/)
         expect(page.body).to match(/#{movie.description}/)
+      end
+
+      it "displays genre details" do
+        expect(page.body).to match(/"genre"/)
+        expect(page.body).to match(/#{movie.genre.name}/)
       end
     end
   end
