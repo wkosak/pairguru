@@ -3,10 +3,18 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all.decorate
+    respond_to do |format|
+      format.html
+      format.json { render json: @movies.to_json( only: %w(id title ) ) }
+    end
   end
 
   def show
     @movie = Movie.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @movie }
+    end
   end
 
   def send_info
