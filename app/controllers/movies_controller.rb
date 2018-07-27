@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :authenticate_user!, only: [:send_info]
+  before_action :authenticate_user!, only: [:send_info, :export]
 
   def index
     @movies = Movie.all.decorate
@@ -16,8 +16,7 @@ class MoviesController < ApplicationController
   end
 
   def export
-    file_path = "tmp/movies.csv"
-    MovieExporter.new.call(current_user, file_path)
+    MovieExporterJob.perform_later current_user.id
     redirect_to root_path, notice: "Movies exported"
   end
 end
