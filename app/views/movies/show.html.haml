@@ -3,3 +3,11 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+
+
+  %h2 Comment this movie:
+  = form_for(Comment.new, url: movie_comments_path(movie_id: @movie), html: { method: :post }) do |f|
+    .field
+      = f.text_area :body, class: 'form-control'
+    .actions
+      = f.submit "Add Comment", data: { disable_with: 'Processing…' }
