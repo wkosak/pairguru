@@ -3,3 +3,5 @@
     %p= comment.body
     %h4= comment.author_and_date
     %hr/
+    - if comment.user == current_user
+      = button_to 'delete', movie_comment_path(movie_id: @movie, id: comment), method: :delete, data: { confirm: 'Are you sure?'}

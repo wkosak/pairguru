@@ -12,6 +12,17 @@ class CommentsController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
+  def destroy
+    @comment = @movie.comments.find params[:id]
+    if policy.can_delete?
+      @comment.destroy
+      flash[:success] = 'Comment deleted!'
+    else
+      flash[:error] = 'No access!'
+    end
+    redirect_to movie_path(@movie)
+  end
+
   private
 
   def comment_params
@@ -22,5 +33,9 @@ class CommentsController < ApplicationController
 
   def find_movie
     @movie = Movie.find params[:movie_id]
+  end
+
+  def policy
+    CommentPolicy.new(current_user, @comment)
   end
 end
