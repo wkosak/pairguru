@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :find_movie
 
   def create
+    return redirect_to @movie, flash: { error: 'You can comment only once!' } unless policy.can_create?
     @comment = Comment.new comment_params
     if @comment.save
       flash[:success] = 'Comment added'
@@ -36,6 +37,6 @@ class CommentsController < ApplicationController
   end
 
   def policy
-    CommentPolicy.new(current_user, @comment)
+    CommentPolicy.new(current_user, @movie, @comment)
   end
 end
