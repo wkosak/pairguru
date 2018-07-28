@@ -11,3 +11,8 @@
       = f.text_area :body, class: 'form-control'
     .actions
       = f.submit "Add Comment", data: { disable_with: 'Processing…' }
+- if @comments.any?
+  .row
+    .col-xs-12
+      %h2 Comments
+      = render 'comments', comments: @comments
