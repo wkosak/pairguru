@@ -24,4 +24,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   validates :phone_number, format: { with: /\A[+]?\d+(?>[- .]\d+)*\z/, allow_nil: true }
+  has_many :comments
+  TOP_COMMENTERS_PERIOD = 7.days.freeze
+
+  scope :top_commenters, -> {
+    joins(:comments)
+      .select("users.*, COUNT(comments.id) as num_comments")
+      .where(comments: { created_at: TOP_COMMENTERS_PERIOD.ago..Time.now })
+      .group("users.id")
+  }
 end
